@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">RaC_Test1</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="Applicationname">Report a Crime</string>
+
+    <string-array name="Reportes">
+        <item>Asalto</item>
+        <item>Robo</item>
+        <item>Fuego</item>
+        <item>Delito</item>
+        <item>Asalto</item>
+        <item>Robo</item>
+        <item>Fuego</item>
+        <item>Delito</item>
+        <item>Asalto</item>
+        <item>Robo</item>
+        <item>Fuego</item>
+        <item>Delito</item>
+        <item>Asalto</item>
+        <item>Robo</item>
+        <item>Fuego</item>
+        <item>Delito</item>
+    </string-array>
+</resources>
