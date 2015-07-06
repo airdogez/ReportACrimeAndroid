@@ -4,35 +4,31 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/RelativeLayout256"
     tools:context=".ReportCrime"
+    android:gravity="center"
     android:orientation="vertical"
-    android:weightSum="1"
-    android:background="#ffa1ccff">
+    android:padding="10dp"
+    android:background="@color/bg_main">
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.15">
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/etTypeOfCrime"
-            android:hint="Type of Crime"
+            android:hint="Title"
             android:layout_alignTop="@+id/editText18"
             android:layout_alignStart="@+id/radioButton"
-            android:layout_marginStart="25dp" />
+            android:paddingBottom="20dp"
+            android:layout_marginBottom="20dp" />
 
-    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -50,83 +46,53 @@
             android:layout_gravity="center_vertical" />
 
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spinnerServices"
             android:layout_gravity="center_vertical"
-            android:textAlignment="center" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.10">
+            android:gravity="right"
+            android:textAlignment="gravity" />
+        </LinearLayout>
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/etDescription"
+            android:lines="4"
             android:hint="Crime Description" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.15"
-        android:layout_gravity="center_horizontal">
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvLatitude" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.15"
-        android:layout_gravity="center_horizontal">
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvLongitude" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.20">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:id="@+id/imageButton4"
             android:src="@mipmap/ic_launcher"
             android:layout_above="@+id/editText24"
             android:layout_centerHorizontal="true" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Report"
+         <Button
             android:id="@+id/buttonReport"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@color/white"
+            android:text="Report Crime"
+            android:textColor="@color/btn_login"
+            android:textSize="15dp" />
     </LinearLayout>
 
 </LinearLayout>

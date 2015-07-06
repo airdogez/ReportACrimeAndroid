@@ -82,6 +82,7 @@ public class LoginActivity extends Activity {
             public void onResponse(JSONObject response) {
                 try {
                     System.out.println(response.toString());
+                    int id = response.getInt("id");
                     String name = response.getString("name");
                     String lastname = response.getString("lastname");
                     String email = response.getString("email");
@@ -89,8 +90,8 @@ public class LoginActivity extends Activity {
                     //TODO: Fix District null Error
                     //int district = response.getInt("district_id");
 
-                    user = new User(name,lastname,email,token,1);
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    user = new User(id,name,lastname,email,token,1);
+                    Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
                     startActivity(intent);
                 } catch (JSONException e) {
                     e.printStackTrace();

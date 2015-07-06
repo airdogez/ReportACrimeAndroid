@@ -20,7 +20,7 @@
         android:label="@string/Applicationname"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="pe.edu.upc.reportacrime.Activities.Activities.SplashScreen"
+            android:name=".Activities.Activities.SplashScreenActivity"
             android:label="@string/Applicationname"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <!-- Indica que es la actividad principal-->
@@ -31,10 +31,6 @@
         </activity>
 
         <activity
-            android:name="pe.edu.upc.reportacrime.Activities.Activities.MainActivity"
-            android:label="@string/Applicationname" >
-        </activity>
-        <activity
             android:name=".Activities.Activities.LoginActivity"
             android:label="@string/Applicationname" >
         </activity>
@@ -43,24 +39,28 @@
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name="pe.edu.upc.reportacrime.Activities.Activities.MainUser"
+            android:name=".Activities.Activities.MainMenuActivity"
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name="pe.edu.upc.reportacrime.Activities.Activities.ReportCrime"
+            android:name=".Activities.Activities.ReportCrime"
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name="pe.edu.upc.reportacrime.Activities.Activities.DelictiveZones"
+            android:name=".Activities.Activities.DelictiveZones"
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name="pe.edu.upc.reportacrime.Activities.Activities.History"
+            android:name=".Activities.Activities.CrimeHistoryActivity"
             android:label="@string/Applicationname">
         </activity>
         <activity
-            android:name="pe.edu.upc.reportacrime.Activities.Activities.ReportCrimeResume"
+            android:name=".Activities.Activities.ReportCrimeResume"
             android:label="@string/Applicationname" >
+        </activity>
+        <activity
+            android:name=".Activities.Activities.CrimeItemActivity"
+            android:label="Report a Crime| Crime Detail" >
         </activity>
 
         <meta-data

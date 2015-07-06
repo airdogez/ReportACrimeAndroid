@@ -59,7 +59,7 @@ public class ReportCrimeResume extends Activity {
         mSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), MainUser.class)
+                startActivity(new Intent(getBaseContext(), MainMenuActivity.class)
                         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
                 finish();
                 //Intent i = new Intent(ReportCrimeResume.this, .class);

@@ -8,7 +8,7 @@ import pe.edu.upc.reportacrime.R;
 /**
  * Created by Miguel on 04/06/2015.
  */
-public class SplashScreen extends Activity{
+public class SplashScreenActivity extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class SplashScreen extends Activity{
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
-                    Intent i = new Intent(SplashScreen.this, LoginActivity.class);
+                    Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
                     startActivity(i);
                 }
             }
