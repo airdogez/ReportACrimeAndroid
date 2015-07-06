@@ -43,7 +43,7 @@ public class MainMenuActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_main);
+        setContentView(R.layout.activity_main_menu);
         user = LoginActivity.getUser();
         imageButtonReport = (ImageButton)findViewById(R.id.imageButtonReport);
         imageButtonReport.setOnClickListener(new View.OnClickListener() {
@@ -97,10 +97,10 @@ public class MainMenuActivity extends Activity {
                         String category = categoryObject.getString("name");
 
                         JSONObject districtObject = result.getJSONObject("district");
-                        String district= categoryObject.getString("name");
+                        String district= districtObject.getString("name");
 
                         JSONObject statusObject = result.getJSONObject("status");
-                        String status = categoryObject.getString("name");
+                        String status = statusObject.getString("name");
 
                         double latitude = result.getDouble("latitude");
                         double longitude = result.getDouble("longitude");

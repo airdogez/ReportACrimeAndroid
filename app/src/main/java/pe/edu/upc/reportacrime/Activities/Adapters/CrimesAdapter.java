@@ -8,13 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import pe.edu.upc.reportacrime.Activities.Activities.CrimeItemActivity;
 import pe.edu.upc.reportacrime.Activities.Models.Crime;
-import pe.edu.upc.reportacrime.BuildConfig;
 import pe.edu.upc.reportacrime.R;
 
 /**
@@ -33,7 +30,7 @@ public class CrimesAdapter extends RecyclerView.Adapter<CrimesAdapter.ViewHolder
     }
 
     public CrimesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.crime_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_crime_card, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }

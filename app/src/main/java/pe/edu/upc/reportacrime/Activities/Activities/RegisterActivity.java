@@ -33,7 +33,7 @@ public class RegisterActivity extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_up);
+        setContentView(R.layout.activity_sign_up);
 
         inputEmail = (EditText)findViewById(R.id.editTextEmail);
         inputPassword= (EditText)findViewById(R.id.editTextPassword);

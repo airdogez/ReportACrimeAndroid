@@ -19,28 +19,18 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/Applicationname"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name=".Activities.Activities.SplashScreenActivity"
-            android:label="@string/Applicationname"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <!-- Indica que es la actividad principal-->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <activity
             android:name=".Activities.Activities.LoginActivity"
-            android:label="@string/Applicationname" >
+            android:label="Log in" >
         </activity>
         <activity
             android:name=".Activities.Activities.RegisterActivity"
-            android:label="@string/Applicationname" >
+            android:label="Registe Account" >
         </activity>
         <activity
             android:name=".Activities.Activities.MainMenuActivity"
-            android:label="@string/Applicationname" >
+            android:label="Report a Crime" >
         </activity>
         <activity
             android:name=".Activities.Activities.ReportCrime"
@@ -52,15 +42,15 @@
         </activity>
         <activity
             android:name=".Activities.Activities.CrimeHistoryActivity"
-            android:label="@string/Applicationname">
+            android:label="Crime History">
         </activity>
         <activity
             android:name=".Activities.Activities.ReportCrimeResume"
-            android:label="@string/Applicationname" >
+            android:label="Crime Resume" >
         </activity>
         <activity
             android:name=".Activities.Activities.CrimeItemActivity"
-            android:label="Report a Crime| Crime Detail" >
+            android:label="Crime Detail" >
         </activity>
 
         <meta-data
@@ -73,6 +63,17 @@
         <activity
             android:name="pe.edu.upc.reportacrime.Activities.Activities.MapsActivity"
             android:label="@string/title_activity_maps" >
+        </activity>
+
+        <activity
+            android:name=".Activities.Activities.SplashScreenActivity"
+            android:label="@string/Applicationname"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <!-- Indica que es la actividad principal-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
     </application>
