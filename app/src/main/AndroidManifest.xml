@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pe.edu.upc.rac_test1" >
+    package="pe.edu.upc.reportacrime" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -20,49 +20,46 @@
         android:label="@string/Applicationname"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Activities.Activities.SplashScreen"
-            android:label="@string/Applicationname" >
+            android:name="pe.edu.upc.reportacrime.Activities.Activities.SplashScreen"
+            android:label="@string/Applicationname"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <!-- Indica que es la actividad principal-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activities.Activities.MainActivity"
-            android:label="@string/Applicationname" >
-            <intent-filter>
-                <action android:name="com.coderefer.androidsplashscreenexample.MAINACTIVITY" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name=".Activities.Activities.SignIn"
+            android:name="pe.edu.upc.reportacrime.Activities.Activities.MainActivity"
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name=".Activities.Activities.SignUp"
+            android:name=".Activities.Activities.LoginActivity"
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name=".Activities.Activities.MainUser"
+            android:name="pe.edu.upc.reportacrime.Activities.Activities.SignUp"
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name=".Activities.Activities.ReportCrime"
+            android:name="pe.edu.upc.reportacrime.Activities.Activities.MainUser"
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name=".Activities.Activities.DelictiveZones"
+            android:name="pe.edu.upc.reportacrime.Activities.Activities.ReportCrime"
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name=".Activities.Activities.History"
+            android:name="pe.edu.upc.reportacrime.Activities.Activities.DelictiveZones"
+            android:label="@string/Applicationname" >
+        </activity>
+        <activity
+            android:name="pe.edu.upc.reportacrime.Activities.Activities.History"
             android:label="@string/Applicationname">
         </activity>
         <activity
-            android:name=".Activities.Activities.ReportCrimeResume"
+            android:name="pe.edu.upc.reportacrime.Activities.Activities.ReportCrimeResume"
             android:label="@string/Applicationname" >
         </activity>
 
@@ -74,7 +71,7 @@
             android:value="AIzaSyBNzUDp56i9CwAqDPoTkM0ijAjYNdw4jbg" />
 
         <activity
-            android:name=".Activities.Activities.MapsActivity"
+            android:name="pe.edu.upc.reportacrime.Activities.Activities.MapsActivity"
             android:label="@string/title_activity_maps" >
         </activity>
 
