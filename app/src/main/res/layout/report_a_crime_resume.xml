@@ -29,31 +29,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Type of Crime"
+            android:text="Title"
             android:paddingBottom="10dip"
             android:id="@+id/textView20" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test Test Test Test "
+            android:text="Placeholder Title"
             android:paddingBottom="20dip"
-            android:id="@+id/tvTypeOfCrimeR" />
+            android:id="@+id/titleTextView" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:paddingBottom="10dip"
-            android:text="Services Required"
-            android:id="@+id/textView22" />
+            android:text="Category"
+            android:id="@+id/textView10" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test Test Test Test "
+            android:text="Category Placeholder"
             android:paddingBottom="20dip"
-            android:id="@+id/tvServReqR" />
+            android:id="@+id/categoryTextView" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,9 +66,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test Test Test Test "
+            android:text="Latitude Placeholder"
             android:paddingBottom="20dip"
-            android:id="@+id/tvLatitudeR" />
+            android:id="@+id/latitudeTextView" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -81,9 +81,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test Test Test Test "
+            android:text="Longitude Placeholder"
             android:paddingBottom="20dip"
-            android:id="@+id/tvLongitudeR" />
+            android:id="@+id/longitudeTextView" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -96,9 +96,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+            android:text="Description Placeholder"
             android:paddingBottom="20dip"
-            android:id="@+id/tvDescriptionR" />
+            android:id="@+id/descriptionTextView" />
 
 
         <Button

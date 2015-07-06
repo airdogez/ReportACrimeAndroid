@@ -29,7 +29,7 @@ public class LoginActivity extends Activity {
     private EditText inputEmail;
     private EditText inputPassword;
     private ProgressBar progressBar;
-    private static String LOGIN_URL = "http://mobdev-aqws3.c9.io/users/activity_sign_in.json";
+    private static String LOGIN_URL = "http://mobdev-aqws3.c9.io/users/sign_in.json";
     private static User user = null;
 
     public static User getUser(){

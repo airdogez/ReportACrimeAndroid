@@ -33,7 +33,7 @@
             android:label="Report a Crime" >
         </activity>
         <activity
-            android:name=".Activities.Activities.ReportCrime"
+            android:name=".Activities.Activities.ReportCrimeActivity"
             android:label="@string/Applicationname" >
         </activity>
         <activity

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="bg_login">#428EFF</color>
-    <color name="bg_register">#428EFF</color>
+    <color name="bg_register">#C8C9C9</color>
     <color name="bg_main">#428EFF</color>
     <color name="white">#ffffff</color>
     <color name="input_login">#222222</color>

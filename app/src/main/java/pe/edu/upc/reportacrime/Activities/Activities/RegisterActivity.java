@@ -30,6 +30,7 @@ public class RegisterActivity extends Activity {
     private EditText inputLastname;
     private EditText inputPhone;
     private static String REGISTER_URL = "http://mobdev-aqws3.c9.io/users";
+    private Button btnBack;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,9 +60,16 @@ public class RegisterActivity extends Activity {
                     e.printStackTrace();
                 }
 
-                finish();
                 //Intent i = new Intent(RegisterActivity.this, .class);
                 // startActivity(i);
+            }
+        });
+
+        btnBack = (Button)findViewById(R.id.buttonBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

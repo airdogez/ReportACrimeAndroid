@@ -6,6 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import pe.edu.upc.reportacrime.R;
 
@@ -15,63 +25,81 @@ import pe.edu.upc.reportacrime.R;
 public class ReportCrimeResume extends Activity {
 
 
-    Button mSend;
+    private static String CREATE_CRIME_REPORT_URL = "http://mobdev-aqws3.c9.io/api/v1/crimes";
+    Button btnSendReport;
+    TextView titleTextView;
+    TextView descriptionTextView;
+    TextView categoryTextView;
+    TextView longitudeTextView;
+    TextView latitudeTextView;
 
-    private String type;
-    private String services;
-    private String description;
-    private String latitude;
-    private String longitude;
-
-    TextView mType;
-    TextView mServices;
-    TextView mDescription;
-    TextView mLatitude;
-    TextView mLongitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_a_crime_resume);
 
-        type = getIntent().getStringExtra(ReportCrime.EXTRA_TYPE);
-        services = getIntent().getStringExtra(ReportCrime.EXTRA_SERVICES);
-        description = getIntent().getStringExtra(ReportCrime.EXTRA_DESCRIPTION);
-        latitude = getIntent().getStringExtra(ReportCrime.EXTRA_LATITUDE);
-        longitude = getIntent().getStringExtra(ReportCrime.EXTRA_LONGITUDE);
+        final Bundle bundle = getIntent().getExtras();
 
-        mType = (TextView) findViewById(R.id.tvTypeOfCrimeR);
-        mType.setText(type);
+        titleTextView = (TextView) findViewById(R.id.titleTextView);
+        titleTextView.setText(bundle.getString("name"));
 
-        mServices = (TextView) findViewById(R.id.tvServReqR);
-        mServices.setText(services);
+        descriptionTextView = (TextView) findViewById(R.id.descriptionTextView);
+        descriptionTextView.setText(bundle.getString("description"));
 
-        mDescription = (TextView) findViewById(R.id.tvDescriptionR);
-        mDescription.setText(description);
+        categoryTextView = (TextView) findViewById(R.id.categoryTextView);
+        categoryTextView.setText(bundle.getString("category"));
 
-        mLatitude = (TextView) findViewById(R.id.tvLatitudeR);
-        mLatitude.setText(latitude);
+        latitudeTextView = (TextView) findViewById(R.id.latitudeTextView);
+        latitudeTextView.setText(String.valueOf(bundle.getDouble("latitude")));
 
-        mLongitude = (TextView) findViewById(R.id.tvLongitudeR);
-        mLongitude.setText(longitude);
+        longitudeTextView = (TextView) findViewById(R.id.longitudeTextView);
+        longitudeTextView.setText(String.valueOf(bundle.getDouble("longitude")));
 
 
-        mSend = (Button)findViewById(R.id.buttonSend);
-        mSend.setOnClickListener(new View.OnClickListener() {
+        btnSendReport = (Button)findViewById(R.id.buttonSend);
+        btnSendReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), MainMenuActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
-                finish();
-                //Intent i = new Intent(ReportCrimeResume.this, .class);
-
-                //startActivity(i);
+                String name = bundle.getString("name");
+                String description = bundle.getString("description");
+                int user_id = bundle.getInt("user_id");
+                int district_id = bundle.getInt("district_id");
+                int category_id = bundle.getInt("category_id");
+                double latitude = bundle.getDouble("latitude");
+                double longitude = bundle.getDouble("longitude");
+                try {
+                    sendReport(name, description, user_id, district_id, category_id, latitude, longitude);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
+    }
 
-
-
-
-
-
+    public void sendReport(String name, String description, int user_id, int district_id, int category_id, double longitude, double latitude) throws JSONException {
+  String jsonBody = "{\"crime\":{\"name\":\"" + name
+                            + "\",\"description\":\"" + description
+                            + "\",\"user_id\":\"" + user_id
+                            + "\",\"district_id\":\"" + district_id
+                            + "\",\"category_id\":\"" + category_id
+                            + "\",\"longitude\":\"" + longitude
+                            + "\",\"latitude\":\"" + latitude
+                            + "\",\"status_id\":\"1\"}}";
+        JSONObject request = new JSONObject(jsonBody);
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(
+                Request.Method.POST, CREATE_CRIME_REPORT_URL, request, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(ReportCrimeResume.this, "Crime registered successfully", Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }
+        );
+        Volley.newRequestQueue(this).add(jsonRequest);
+        finish();
     }
 }
