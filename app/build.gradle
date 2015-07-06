@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        reportacrime {
+            keyAlias 'ReportacrimeRelease'
+            keyPassword 'andres032409a'
+            storeFile file('D:/UPC/Moviles/reportacrime.jks')
+            storePassword 'andres032409a'
+        }
+    }
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
-
     defaultConfig {
         applicationId "pe.edu.upc.reportacrime"
         minSdkVersion 18
@@ -27,7 +34,5 @@ dependencies {
     compile 'com.android.support:support-v4:22.2.0'
     compile 'com.android.support:recyclerview-v7:22.2.0'
     compile 'com.android.support:cardview-v7:22.2.0'
-    compile 'com.google.android.gms:play-services:7.5.0'\
-
-
+    compile 'com.google.android.gms:play-services:7.5.0'
 }
