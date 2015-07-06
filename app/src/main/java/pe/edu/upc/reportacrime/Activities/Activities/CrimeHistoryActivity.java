@@ -28,7 +28,7 @@ public class CrimeHistoryActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.history);
+        setContentView(R.layout.activity_crime_history);
         mCrimesRecyclerView = (RecyclerView)findViewById(R.id.crimesHistoryRecycler);
         mCrimesRecyclerView.setHasFixedSize(true);
         mCrimesLayoutManager = new LinearLayoutManager(this);

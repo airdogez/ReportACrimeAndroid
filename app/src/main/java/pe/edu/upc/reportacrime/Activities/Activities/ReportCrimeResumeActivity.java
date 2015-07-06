@@ -1,7 +1,6 @@
 package pe.edu.upc.reportacrime.Activities.Activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +21,7 @@ import pe.edu.upc.reportacrime.R;
 /**
  * Created by Miguel on 05/06/2015.
  */
-public class ReportCrimeResume extends Activity {
+public class ReportCrimeResumeActivity extends Activity {
 
 
     private static String CREATE_CRIME_REPORT_URL = "http://mobdev-aqws3.c9.io/api/v1/crimes";
@@ -36,7 +35,7 @@ public class ReportCrimeResume extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.report_a_crime_resume);
+        setContentView(R.layout.activity_report_a_crime_resume);
 
         final Bundle bundle = getIntent().getExtras();
 
@@ -90,7 +89,7 @@ public class ReportCrimeResume extends Activity {
                 Request.Method.POST, CREATE_CRIME_REPORT_URL, request, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Toast.makeText(ReportCrimeResume.this, "Crime registered successfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(ReportCrimeResumeActivity.this, "Crime registered successfully", Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override

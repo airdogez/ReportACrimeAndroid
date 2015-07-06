@@ -57,12 +57,12 @@ public class MainMenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         user = LoginActivity.getUser();
+        searchDistricts();
+        searchCategories();
         imageButtonReport = (ImageButton)findViewById(R.id.imageButtonReport);
         imageButtonReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchDistricts();
-                searchCategories();
                 if( !districts.isEmpty() && !categories.isEmpty()){
                     Intent i = new Intent(MainMenuActivity.this, ReportCrimeActivity.class);
                     startActivity(i);
@@ -74,8 +74,10 @@ public class MainMenuActivity extends Activity {
         imageButtonZones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainMenuActivity.this, DelictiveZones.class);
-                startActivity(i);
+                if( !districts.isEmpty()) {
+                    Intent i = new Intent(MainMenuActivity.this, DelictiveZonesActivity.class);
+                    startActivity(i);
+                }
             }
         });
 

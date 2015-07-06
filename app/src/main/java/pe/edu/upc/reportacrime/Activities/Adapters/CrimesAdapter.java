@@ -49,6 +49,8 @@ public class CrimesAdapter extends RecyclerView.Adapter<CrimesAdapter.ViewHolder
                 bundle.putString("category", crimes.get(position).getCategory());
                 bundle.putString("district", crimes.get(position).getDistrict());
                 bundle.putString("status", crimes.get(position).getStatus());
+                bundle.putDouble("latitude", crimes.get(position).getLatitude());
+                bundle.putDouble("longitude", crimes.get(position).getLongitude());
                 crimeItemIntent.putExtras(bundle);
                 v.getContext().startActivity(crimeItemIntent);
             }

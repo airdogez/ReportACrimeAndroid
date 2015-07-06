@@ -20,15 +20,20 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:elevation="10dp"
+        android:background="@color/white"
         android:layout_gravity="center_horizontal">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButtonReport"
+            android:background="@null"
             android:layout_alignStart="@+id/imageButtonZones"
             android:layout_gravity="center_horizontal"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/report" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,6 +41,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Report a Crime"
             android:id="@+id/textView6"
+            android:textColor="@color/btn_login"
             android:layout_below="@+id/imageButtonReport"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal" />
@@ -45,13 +51,18 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_margin="20dp"
+        android:background="@color/white"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:elevation="10dp"
         android:layout_height="wrap_content">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButtonZones"
-            android:src="@mipmap/ic_launcher"
+            android:background="@null"
+            android:src="@mipmap/map"
             android:layout_centerVertical="true"
             android:layout_alignStart="@+id/imageButtonHistory"
             android:layout_gravity="center_horizontal" />
@@ -63,6 +74,7 @@
             android:text="Delictive Zones"
             android:id="@+id/textView5"
             android:layout_below="@+id/imageButtonZones"
+            android:textColor="@color/btn_login"
             android:layout_alignStart="@+id/textView6"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
@@ -72,13 +84,18 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        android:elevation="10dp"
         android:layout_gravity="center_horizontal">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButtonHistory"
-            android:src="@mipmap/ic_launcher"
+            android:background="@null"
+            android:src="@mipmap/history"
             android:layout_below="@+id/textView5"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal" />
@@ -87,6 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/btn_login"
             android:text="History"
             android:id="@+id/textView4"
             android:layout_below="@+id/imageButtonHistory"
