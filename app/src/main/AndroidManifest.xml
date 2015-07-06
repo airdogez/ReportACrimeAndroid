@@ -39,7 +39,7 @@
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name="pe.edu.upc.reportacrime.Activities.Activities.SignUp"
+            android:name=".Activities.Activities.RegisterActivity"
             android:label="@string/Applicationname" >
         </activity>
         <activity

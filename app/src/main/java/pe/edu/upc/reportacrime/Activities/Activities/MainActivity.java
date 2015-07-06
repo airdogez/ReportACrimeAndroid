@@ -32,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
         ButtonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SignUp.class);
+                Intent i = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(i);
             }
         });
