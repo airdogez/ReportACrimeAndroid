@@ -39,6 +39,7 @@ public class SessionManager {
         editor.putString("lastname", user.getLastname());
         editor.putString("email", user.getEmail());
         editor.putString("token", user.getToken());
+        editor.putString("phone", user.getPhone());
         editor.putInt("id", user.getId());
         editor.putInt("district", user.getDistrict());
 
@@ -52,9 +53,10 @@ public class SessionManager {
         String lastname = sharedPreferences.getString("lastname", null);
         String email = sharedPreferences.getString("email", null);
         String token = sharedPreferences.getString("token", null);
+        String phone = sharedPreferences.getString("phone", null);
         int id = sharedPreferences.getInt("id", -1);
         int district = sharedPreferences.getInt("district", -1);
-        User user = new User(id,name,lastname,email,token,district);
+        User user = new User(id,name,lastname,email,token,district, phone);
         return user;
     }
 

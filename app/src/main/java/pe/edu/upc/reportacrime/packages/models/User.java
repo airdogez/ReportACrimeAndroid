@@ -10,6 +10,7 @@ public class User {
     String email;
     String token;
     int district;
+    String phone;
 
     public User(){
         this.id = -1;
@@ -18,19 +19,25 @@ public class User {
         this.email = "";
         this.token = "";
         this.district = -1;
+        this.phone = "";
     }
 
-    public User(int id, String name, String lastname, String email, int district){
-        this(id, name,lastname,email,"",district);
+    public User(int id, String name, String lastname, String email, int district, String phone){
+        this(id, name,lastname,email,"",district, phone);
     }
 
-    public User(int id, String name, String lastname, String email, String token, int district){
+    public User(int id, String name, String lastname, String email, String token, int district, String phone){
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.email = email;
         this.token = token;
         this.district = district;
+        this.phone = phone;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public String getFullName(){

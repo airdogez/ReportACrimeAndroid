@@ -65,22 +65,25 @@ public class RegisterActivity extends Activity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Verify that every EditText is Filled.
-                if( inputEmail.getText().toString().length() <= 0){
-                }
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
                 String name = inputName.getText().toString();
                 String lastname = inputLastname.getText().toString();
-                //TODO: Add Phone
-                try {
-                    registerUser(email, password, name, lastname);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                String phone = inputPhone.getText().toString();
+                District district = (District) spinnerDistrict.getSelectedItem();
 
-                //Intent i = new Intent(RegisterActivity.this, .class);
-                // startActivity(i);
+                //If all fields have been filled, Register the user
+                if(email.trim().length() > 0 && password.trim().length() > 0 && name.trim().length()>0
+                        && lastname.trim().length() > 0 && district.getName().trim().length() > 0 && phone.trim().length() > 0 ){
+                    try {
+                        int district_id = district.getId();
+                        registerUser(email, password, name, lastname, district_id, phone);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else{
+                    Toast.makeText(getApplicationContext(),"Please fill all fields.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -93,11 +96,12 @@ public class RegisterActivity extends Activity {
         });
     }
 
-    public void registerUser(String email, String password, String name, String lastname) throws JSONException {
+    public void registerUser(String email, String password, String name, String lastname, int district_id, String phone) throws JSONException {
         String jsonBody = "{\"user\":{\"email\":\"" + email
                             + "\",\"name\":\"" + name
                             + "\",\"lastname\":\"" + lastname
-                            + "\",\"district_id\":\"" + 1
+                            + "\",\"district_id\":\"" + district_id
+                            + "\",\"phone\":\"" + phone
                             + "\",\"password\":\"" + password
                             + "\",\"password_confirmation\":\"" + password + "\"}}";
         JSONObject request = new JSONObject(jsonBody);
@@ -106,6 +110,7 @@ public class RegisterActivity extends Activity {
             @Override
             public void onResponse(JSONObject response) {
                 Toast.makeText(RegisterActivity.this, "Registration succesful",Toast.LENGTH_LONG).show();
+                finish();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -115,7 +120,6 @@ public class RegisterActivity extends Activity {
         }
         );
         Volley.newRequestQueue(this).add(jsonRequest);
-        finish();
     }
 
      private void searchDistricts() {

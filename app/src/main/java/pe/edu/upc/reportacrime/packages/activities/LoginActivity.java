@@ -65,18 +65,18 @@ public class LoginActivity extends Activity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    String email = inputEmail.getText().toString();
-                    String password = inputPassword.getText().toString();
-                    if(email.trim().length() > 0 && password.trim().length() > 0){
-                    try {
-                        login(email, password);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }}
-                    else {
-                        Toast.makeText(getApplicationContext(),
-                                "Please enter your login credentials", Toast.LENGTH_LONG).show();
-                    }
+            String email = inputEmail.getText().toString();
+            String password = inputPassword.getText().toString();
+            if(email.trim().length() > 0 && password.trim().length() > 0){
+                try {
+                    login(email, password);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                    Toast.makeText(getApplicationContext(),
+                    "Please enter your login credentials", Toast.LENGTH_LONG).show();
+                }
                 }
             }
         );
@@ -112,11 +112,11 @@ public class LoginActivity extends Activity {
                     String lastname = response.getString("lastname");
                     String email = response.getString("email");
                     String token = response.getString("authentication_token");
+                    String phone = response.getString("phone");
                     int district_id = response.getInt("district_id");
 
-                    user = new User(id, name, lastname,email,token, district_id);
+                    user = new User(id, name, lastname,email,token, district_id, phone);
                     session.setLogin(true, user);
-
 
                     Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
                     startActivity(intent);
