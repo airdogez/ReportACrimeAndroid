@@ -1,4 +1,4 @@
-package pe.edu.upc.reportacrime.Activities.Models;
+package pe.edu.upc.reportacrime.packages.models;
 
 /**
  * Created by Andres R on 06/07/2015.

@@ -1,4 +1,4 @@
-package pe.edu.upc.reportacrime.Activities.Activities;
+package pe.edu.upc.reportacrime.packages.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -9,8 +9,8 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-import pe.edu.upc.reportacrime.Activities.Adapters.CrimesAdapter;
-import pe.edu.upc.reportacrime.Activities.Models.Crime;
+import pe.edu.upc.reportacrime.packages.adapters.CrimesAdapter;
+import pe.edu.upc.reportacrime.packages.models.Crime;
 import pe.edu.upc.reportacrime.R;
 
 /**

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pe.edu.upc.reportacrime" >
 
-    <permission android:name="pe.edu.upc.reportacrime.Activities.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+    <permission android:name="pe.edu.upc.reportacrime.packages.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
     <uses-permission android:name="pe.edu.upc.reportacrime.Activities.permission.MAPS_RECEIVE"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,35 +23,35 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name=".Activities.Activities.LoginActivity"
+            android:name=".packages.activities.LoginActivity"
             android:label="Log in" >
         </activity>
         <activity
-            android:name=".Activities.Activities.RegisterActivity"
+            android:name=".packages.activities.RegisterActivity"
             android:label="Registe Account" >
         </activity>
         <activity
-            android:name=".Activities.Activities.MainMenuActivity"
+            android:name=".packages.activities.MainMenuActivity"
             android:label="Report a Crime" >
         </activity>
         <activity
-            android:name=".Activities.Activities.ReportCrimeActivity"
+            android:name=".packages.activities.ReportCrimeActivity"
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name=".Activities.Activities.DelictiveZonesActivity"
+            android:name=".packages.activities.DelictiveZonesActivity"
             android:label="@string/Applicationname" >
         </activity>
         <activity
-            android:name=".Activities.Activities.CrimeHistoryActivity"
+            android:name=".packages.activities.CrimeHistoryActivity"
             android:label="Crime History">
         </activity>
         <activity
-            android:name=".Activities.Activities.ReportCrimeResumeActivity"
+            android:name=".packages.activities.ReportCrimeResumeActivity"
             android:label="Crime Resume" >
         </activity>
         <activity
-            android:name=".Activities.Activities.CrimeItemActivity"
+            android:name=".packages.activities.CrimeItemActivity"
             android:label="Crime Detail" >
         </activity>
 
@@ -63,12 +63,12 @@
             android:value="AIzaSyAwMZ3SHy1JA4-4Z3Ta6dOsl5xaOtgz0OU" />
 
         <activity
-            android:name="pe.edu.upc.reportacrime.Activities.Activities.MapsActivity"
+            android:name="pe.edu.upc.reportacrime.packages.activities.MapsActivity"
             android:label="@string/title_activity_maps" >
         </activity>
 
         <activity
-            android:name=".Activities.Activities.SplashScreenActivity"
+            android:name=".packages.activities.SplashScreenActivity"
             android:label="@string/Applicationname"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <!-- Indica que es la actividad principal-->

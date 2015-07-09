@@ -1,4 +1,4 @@
-package pe.edu.upc.reportacrime.Activities.Activities;
+package pe.edu.upc.reportacrime.packages.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

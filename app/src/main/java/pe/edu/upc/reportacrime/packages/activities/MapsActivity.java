@@ -1,4 +1,4 @@
-package pe.edu.upc.reportacrime.Activities.Activities;
+package pe.edu.upc.reportacrime.packages.activities;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package pe.edu.upc.reportacrime.Activities.Adapters;
+package pe.edu.upc.reportacrime.packages.adapters;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import pe.edu.upc.reportacrime.Activities.Activities.CrimeItemActivity;
-import pe.edu.upc.reportacrime.Activities.Models.Crime;
+import pe.edu.upc.reportacrime.packages.activities.CrimeItemActivity;
+import pe.edu.upc.reportacrime.packages.models.Crime;
 import pe.edu.upc.reportacrime.R;
 
 /**

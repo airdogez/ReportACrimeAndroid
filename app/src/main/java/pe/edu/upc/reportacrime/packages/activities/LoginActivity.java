@@ -1,12 +1,14 @@
-package pe.edu.upc.reportacrime.Activities.Activities;
+package pe.edu.upc.reportacrime.packages.activities;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -17,18 +19,20 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import pe.edu.upc.reportacrime.Activities.Models.User;
+import pe.edu.upc.reportacrime.packages.helpers.SessionManager;
+import pe.edu.upc.reportacrime.packages.models.User;
 import pe.edu.upc.reportacrime.R;
 
 /**
  * Created by Miguel on 05/06/2015.
  */
 public class LoginActivity extends Activity {
+    private SessionManager session;
     private Button btnLogin;
     private Button btnRegister;
     private EditText inputEmail;
     private EditText inputPassword;
-    private ProgressBar progressBar;
+    private ProgressDialog progressDialog;
     private static String LOGIN_URL = "http://mobdev-aqws3.c9.io/users/sign_in.json";
     private static User user = null;
 
@@ -46,15 +50,32 @@ public class LoginActivity extends Activity {
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnRegister = (Button) findViewById(R.id.btnRegister);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+
+        session = new SessionManager(getApplicationContext());
+
+        if(session.isLoggedIn()){
+            user = session.getUser();
+            Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     String email = inputEmail.getText().toString();
                     String password = inputPassword.getText().toString();
+                    if(email.trim().length() > 0 && password.trim().length() > 0){
                     try {
                         login(email, password);
                     } catch (JSONException e) {
                         e.printStackTrace();
+                    }}
+                    else {
+                        Toast.makeText(getApplicationContext(),
+                                "Please enter your login credentials", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -65,32 +86,38 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
-
-        progressBar = (ProgressBar)findViewById(R.id.progressBarSignIn);
-        progressBar.setVisibility(View.INVISIBLE);
 
     }
 
     public void login(String email, String password) throws JSONException {
+        progressDialog.setMessage("Loggin in...");
+        progressDialog.show();
+
+        //String containing the login information
         String jsonBody = "{\"user\":{\"email\":\"" + email + "\",\"password\":\"" + password + "\"}}";
+
         JSONObject request = new JSONObject(jsonBody);
         JsonObjectRequest jsonRequest = new JsonObjectRequest(
                 Request.Method.POST, LOGIN_URL, request, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                System.out.println(response.toString());
+                progressDialog.hide();
                 try {
-                    System.out.println(response.toString());
                     int id = response.getInt("id");
                     String name = response.getString("name");
                     String lastname = response.getString("lastname");
                     String email = response.getString("email");
                     String token = response.getString("authentication_token");
-                    //TODO: Fix District null Error
-                    //int district = response.getInt("district_id");
+                    int district_id = response.getInt("district_id");
 
-                    user = new User(id,name,lastname,email,token,1);
+                    user = new User(id, name, lastname,email,token, district_id);
+                    session.setLogin(true, user);
+
+
                     Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
                     startActivity(intent);
                 } catch (JSONException e) {
@@ -100,6 +127,7 @@ public class LoginActivity extends Activity {
         }, new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError error){
+                Toast.makeText(getApplicationContext(),"Email/Password did not match, enter again.", Toast.LENGTH_LONG).show();
                 error.printStackTrace();
             }
         }

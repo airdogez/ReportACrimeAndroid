@@ -1,7 +1,6 @@
-package pe.edu.upc.reportacrime.Activities.Adapters;
+package pe.edu.upc.reportacrime.packages.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -9,44 +8,44 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import pe.edu.upc.reportacrime.Activities.Models.District;
+import pe.edu.upc.reportacrime.packages.models.Category;
 
 /**
  * Created by Andres R on 06/07/2015.
  */
-public class DistrictsAdapter  extends ArrayAdapter<District>{
-    private ArrayList<District> districts;
+public class CategoriesAdapter extends ArrayAdapter<Category> {
+    private ArrayList<Category> categories;
     private Context context;
 
-    public DistrictsAdapter(Context context, int resource, ArrayList<District> objects) {
+    public CategoriesAdapter(Context context, int resource, ArrayList<Category> objects) {
         super(context, resource, objects);
-        this.districts = objects;
-        this.context= context;
+        this.categories = objects;
+        this.context = context;
     }
 
     public int getCount(){
-        return districts.size();
+        return categories.size();
     }
 
-    public District getItem(int position){
-        return districts.get(position);
+    public Category getItem(int position){
+        return categories.get(position);
     }
 
     public long getItemId(int position){
-        return districts.get(position).getId();
+        return categories.get(position).getId();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         TextView label = new TextView(context);
-        label.setText(districts.get(position).getName());
+        label.setText(categories.get(position).getName());
         return label;
     }
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent){
         TextView label = new TextView(context);
-        label.setText(districts.get(position).getName());
+        label.setText(categories.get(position).getName());
         return label;
     }
 }

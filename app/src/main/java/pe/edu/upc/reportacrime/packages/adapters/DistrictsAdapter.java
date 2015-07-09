@@ -1,4 +1,4 @@
-package pe.edu.upc.reportacrime.Activities.Adapters;
+package pe.edu.upc.reportacrime.packages.adapters;
 
 import android.content.Context;
 import android.view.View;
@@ -8,44 +8,44 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import pe.edu.upc.reportacrime.Activities.Models.Category;
+import pe.edu.upc.reportacrime.packages.models.District;
 
 /**
  * Created by Andres R on 06/07/2015.
  */
-public class CategoriesAdapter extends ArrayAdapter<Category> {
-    private ArrayList<Category> categories;
+public class DistrictsAdapter  extends ArrayAdapter<District>{
+    private ArrayList<District> districts;
     private Context context;
 
-    public CategoriesAdapter(Context context, int resource, ArrayList<Category> objects) {
+    public DistrictsAdapter(Context context, int resource, ArrayList<District> objects) {
         super(context, resource, objects);
-        this.categories = objects;
-        this.context = context;
+        this.districts = objects;
+        this.context= context;
     }
 
     public int getCount(){
-        return categories.size();
+        return districts.size();
     }
 
-    public Category getItem(int position){
-        return categories.get(position);
+    public District getItem(int position){
+        return districts.get(position);
     }
 
     public long getItemId(int position){
-        return categories.get(position).getId();
+        return districts.get(position).getId();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         TextView label = new TextView(context);
-        label.setText(categories.get(position).getName());
+        label.setText(districts.get(position).getName());
         return label;
     }
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent){
         TextView label = new TextView(context);
-        label.setText(categories.get(position).getName());
+        label.setText(districts.get(position).getName());
         return label;
     }
 }

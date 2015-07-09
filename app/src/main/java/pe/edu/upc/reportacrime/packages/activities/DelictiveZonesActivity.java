@@ -1,4 +1,4 @@
-package pe.edu.upc.reportacrime.Activities.Activities;
+package pe.edu.upc.reportacrime.packages.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -21,9 +21,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import pe.edu.upc.reportacrime.Activities.Adapters.DistrictsAdapter;
-import pe.edu.upc.reportacrime.Activities.Models.Crime;
-import pe.edu.upc.reportacrime.Activities.Models.District;
+import pe.edu.upc.reportacrime.packages.adapters.DistrictsAdapter;
+import pe.edu.upc.reportacrime.packages.models.Crime;
+import pe.edu.upc.reportacrime.packages.models.District;
 import pe.edu.upc.reportacrime.R;
 
 /**
