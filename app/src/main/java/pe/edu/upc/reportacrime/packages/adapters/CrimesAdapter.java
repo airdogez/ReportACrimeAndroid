@@ -30,7 +30,7 @@ public class CrimesAdapter extends RecyclerView.Adapter<CrimesAdapter.ViewHolder
     }
 
     public CrimesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_crime_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.crime_card, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }

@@ -77,11 +77,11 @@ public class ReportCrimeActivity extends Activity  implements LocationListener{
         titleEditText = (EditText)findViewById(R.id.titleEditText);
         descriptionEditText = (EditText)findViewById(R.id.descriptionEditText);
 
-        mDistrictsAdapter = new DistrictsAdapter(this, android.R.layout.simple_spinner_item, districts);
+        mDistrictsAdapter = new DistrictsAdapter(this, R.layout.spinner, districts);
         districtSpinner = (Spinner)findViewById(R.id.districtsSpinner);
         districtSpinner.setAdapter(mDistrictsAdapter);
 
-        mCategoryAdapter = new CategoriesAdapter(this, android.R.layout.simple_spinner_item, categories);
+        mCategoryAdapter = new CategoriesAdapter(this, R.layout.spinner, categories);
         categorySpinner = (Spinner)findViewById(R.id.categoriesSpinner);
         categorySpinner.setAdapter(mCategoryAdapter);
 

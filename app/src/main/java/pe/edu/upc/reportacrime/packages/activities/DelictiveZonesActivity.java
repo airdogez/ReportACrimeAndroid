@@ -48,7 +48,7 @@ public class DelictiveZonesActivity extends Activity {
 
         districts = MainMenuActivity.getDistricts();
 
-        mDistrictsAdapter = new DistrictsAdapter(this, android.R.layout.simple_spinner_item, districts);
+        mDistrictsAdapter = new DistrictsAdapter(this, R.layout.spinner, districts);
         districtSpinner = (Spinner)findViewById(R.id.districtsSpinner);
         districtSpinner.setAdapter(mDistrictsAdapter);
 
