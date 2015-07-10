@@ -113,6 +113,17 @@
             android:background="@color/white"
             android:elevation="5dp"
             android:hint="Address" />
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tagsEditText"
+            android:padding="10dp"
+            android:gravity="top"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:elevation="5dp"
+            android:hint="Coma separated Tags" />
 
     <ImageButton
         android:layout_width="wrap_content"

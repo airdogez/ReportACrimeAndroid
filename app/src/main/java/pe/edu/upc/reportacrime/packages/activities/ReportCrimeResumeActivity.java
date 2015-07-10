@@ -36,6 +36,7 @@ public class ReportCrimeResumeActivity extends AppCompatActivity{
     TextView descriptionTextView;
     TextView categoryTextView;
     TextView addressTextView;
+    TextView tagsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,9 @@ public class ReportCrimeResumeActivity extends AppCompatActivity{
         addressTextView = (TextView) findViewById(R.id.addressTextView);
         addressTextView.setText(bundle.getString("address"));
 
+        tagsTextView = (TextView) findViewById(R.id.tagsTextView);
+        tagsTextView.setText(bundle.getString("tag_list"));
+
         btnSendReport = (Button)findViewById(R.id.buttonSend);
         btnSendReport.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +70,9 @@ public class ReportCrimeResumeActivity extends AppCompatActivity{
                 int district_id = bundle.getInt("district_id");
                 int category_id = bundle.getInt("category_id");
                 String address = bundle.getString("address");
+                String tag_list = bundle.getString("tag_list");
                 try {
-                    sendReport(name, description, user_id, district_id, category_id, address);
+                    sendReport(name, description, user_id, district_id, category_id, address, tag_list);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -75,13 +80,14 @@ public class ReportCrimeResumeActivity extends AppCompatActivity{
         });
     }
 
-    public void sendReport(String name, String description, int user_id, int district_id, int category_id, String address) throws JSONException {
+    public void sendReport(String name, String description, int user_id, int district_id, int category_id, String address, String  tag_list) throws JSONException {
   String jsonBody = "{\"crime\":{\"name\":\"" + name
                             + "\",\"description\":\"" + description
                             + "\",\"user_id\":\"" + user_id
                             + "\",\"district_id\":\"" + district_id
                             + "\",\"category_id\":\"" + category_id
                             + "\",\"address\":\"" + address
+                            + "\",\"tag_list\":\"" + tag_list
                             + "\",\"status_id\":\"1\"}}";
         JSONObject request = new JSONObject(jsonBody);
         request.toString();

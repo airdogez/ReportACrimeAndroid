@@ -38,6 +38,8 @@ public class ReportCrimeActivity extends AppCompatActivity implements LocationLi
     private EditText titleEditText;
     private EditText descriptionEditText;
     private EditText addressEditText;
+    private EditText tagsEditText;
+
     private Spinner categorySpinner;
     private Spinner districtSpinner;
     private Button reportButton;
@@ -98,6 +100,7 @@ public class ReportCrimeActivity extends AppCompatActivity implements LocationLi
 
         titleEditText = (EditText)findViewById(R.id.titleEditText);
         descriptionEditText = (EditText)findViewById(R.id.descriptionEditText);
+        tagsEditText = (EditText)findViewById(R.id.tagsEditText);
 
         mDistrictsAdapter = new DistrictsAdapter(this, R.layout.spinner, SplashScreenActivity.getDistricts());
         districtSpinner = (Spinner)findViewById(R.id.districtsSpinner);
@@ -123,7 +126,7 @@ public class ReportCrimeActivity extends AppCompatActivity implements LocationLi
                 bundle.putString("category", cat.getName());
                 int dis_id = (int)districtSpinner.getSelectedItemId();
                 bundle.putInt("district_id", dis_id);
-
+                bundle.putString("tag_list", tagsEditText.getText().toString());
                 District district = (District) districtSpinner.getSelectedItem();
                 bundle.putString("address",addressEditText.getText()+ ", " + district.getName());
                 i.putExtras(bundle);
