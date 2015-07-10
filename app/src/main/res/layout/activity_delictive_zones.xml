@@ -19,11 +19,10 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1.07">
+        android:layout_gravity="center_horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,7 +34,13 @@
 
         <Spinner
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:paddingLeft="5dp"
+            android:background="@color/white"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:elevation="5dp"
+            android:textAlignment="gravity"
             android:id="@+id/districtsSpinner" />
     </LinearLayout>
 
@@ -46,7 +51,7 @@
             android:background="@color/bg_register"
             android:id="@+id/buttonMap"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="40dp"/>
 
     </LinearLayout>
 </LinearLayout>

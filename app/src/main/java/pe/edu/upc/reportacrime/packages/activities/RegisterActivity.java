@@ -116,6 +116,7 @@ public class RegisterActivity extends Activity {
         }
         );
         Volley.newRequestQueue(this).add(jsonRequest);
+        finish();
     }
 
 

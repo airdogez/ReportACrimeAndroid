@@ -91,7 +91,6 @@ public class LoginActivity extends Activity {
                 if(SplashScreenActivity.getDistricts() != null) {
                     Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                     startActivity(intent);
-                    finish();
                 }
             }
         });
@@ -99,7 +98,7 @@ public class LoginActivity extends Activity {
     }
 
     public void login(String email, String password) throws JSONException {
-        progressDialog.setMessage("Loggin in...");
+        progressDialog.setMessage("Login in...");
         progressDialog.show();
 
         //String containing the login information
@@ -122,7 +121,7 @@ public class LoginActivity extends Activity {
                     int district_id = response.getInt("district_id");
 
                     user = new User(id, name, lastname,email,token, district_id, phone);
-                    session.setLogin(true, user);
+                    session.setUser(user);
 
                     Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
                     startActivity(intent);
@@ -133,7 +132,8 @@ public class LoginActivity extends Activity {
         }, new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError error){
-                Toast.makeText(getApplicationContext(),"Email/Password did not match, enter again.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Email/Password did not match, enter again.", Toast.LENGTH_SHORT).show();
+                progressDialog.hide();
                 error.printStackTrace();
             }
         }

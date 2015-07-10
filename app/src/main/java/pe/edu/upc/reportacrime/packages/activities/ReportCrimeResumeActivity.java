@@ -1,6 +1,7 @@
 package pe.edu.upc.reportacrime.packages.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -75,7 +76,7 @@ public class ReportCrimeResumeActivity extends Activity {
         });
     }
 
-    public void sendReport(String name, String description, int user_id, int district_id, int category_id, double longitude, double latitude) throws JSONException {
+    public void sendReport(String name, String description, int user_id, int district_id, int category_id, double latitude, double longitude) throws JSONException {
   String jsonBody = "{\"crime\":{\"name\":\"" + name
                             + "\",\"description\":\"" + description
                             + "\",\"user_id\":\"" + user_id
@@ -85,11 +86,15 @@ public class ReportCrimeResumeActivity extends Activity {
                             + "\",\"latitude\":\"" + latitude
                             + "\",\"status_id\":\"1\"}}";
         JSONObject request = new JSONObject(jsonBody);
+        request.toString();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(
                 Request.Method.POST, UrlHelper.CREATE_CRIME_REPORT_URL, request, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                Intent intent = new Intent(ReportCrimeResumeActivity.this, MainMenuActivity.class);
+                startActivity(intent);
                 Toast.makeText(ReportCrimeResumeActivity.this, "Crime registered successfully", Toast.LENGTH_LONG).show();
+                finish();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -99,6 +104,5 @@ public class ReportCrimeResumeActivity extends Activity {
         }
         );
         Volley.newRequestQueue(this).add(jsonRequest);
-        finish();
     }
 }

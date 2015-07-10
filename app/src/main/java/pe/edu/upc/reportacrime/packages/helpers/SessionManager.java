@@ -33,8 +33,8 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void setLogin(boolean isLoggedIn, User user){
-        editor.putBoolean(KEY_IS_LOGGEDIN, isLoggedIn);
+    public void setUser(User user){
+        editor.putBoolean(KEY_IS_LOGGEDIN, true);
         editor.putString("name", user.getName());
         editor.putString("lastname", user.getLastname());
         editor.putString("email", user.getEmail());
@@ -58,6 +58,19 @@ public class SessionManager {
         int district = sharedPreferences.getInt("district", -1);
         User user = new User(id,name,lastname,email,token,district, phone);
         return user;
+    }
+
+    public void clearUser(){
+        editor.putBoolean(KEY_IS_LOGGEDIN, false);
+        editor.putString("name","");
+        editor.putString("lastname","");
+        editor.putString("email","");
+        editor.putString("token", "");
+        editor.putString("phone", "");
+        editor.putInt("id", -1);
+        editor.putInt("district", -1);
+
+        editor.commit();
     }
 
     public boolean isLoggedIn(){

@@ -6,6 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:gravity="center"
     tools:context=".History"
     android:orientation="vertical"
     android:background="@color/bg_main">
@@ -13,16 +14,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/crimesHistoryRecycler"
             android:layout_width="match_parent"
-            android:layout_height="419dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/editText28"
             android:layout_centerHorizontal="true" />
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="Go back"
-            android:id="@+id/buttonBack"
-            android:layout_gravity="bottom" />
 </LinearLayout>

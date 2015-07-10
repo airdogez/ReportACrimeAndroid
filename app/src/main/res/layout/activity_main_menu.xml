@@ -27,8 +27,8 @@
         android:layout_gravity="center_horizontal">
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:id="@+id/imageButtonReport"
             android:background="@null"
             android:layout_alignStart="@+id/imageButtonZones"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content">
 
         <ImageButton
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/imageButtonZones"
             android:background="@null"
@@ -91,8 +91,8 @@
         android:layout_gravity="center_horizontal">
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:id="@+id/imageButtonHistory"
             android:background="@null"
             android:src="@mipmap/history"
@@ -111,6 +111,17 @@
             android:layout_alignStart="@+id/imageButtonHistory"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/logoutButton"
+            android:background="@color/white"
+            android:elevation="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Logout"/>
 
 </LinearLayout>
 </LinearLayout>

@@ -1,10 +1,15 @@
 package pe.edu.upc.reportacrime.packages.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -20,6 +25,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import pe.edu.upc.reportacrime.packages.helpers.SessionManager;
 import pe.edu.upc.reportacrime.packages.helpers.UrlHelper;
 import pe.edu.upc.reportacrime.packages.models.Crime;
 import pe.edu.upc.reportacrime.packages.models.Category;
@@ -30,11 +36,13 @@ import pe.edu.upc.reportacrime.R;
 /**
  * Created by Miguel on 05/06/2015.
  */
-public class MainMenuActivity extends Activity {
+public class MainMenuActivity extends Activity{
 
+    SessionManager sessionManager;
     ImageButton imageButtonReport;
     ImageButton imageButtonZones;
     ImageButton imageButtonHistory;
+    Button logoutbutton;
     User user;
     private static ArrayList<Crime> crimes = new ArrayList<>();
 
@@ -47,6 +55,8 @@ public class MainMenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         user = LoginActivity.getUser();
+        sessionManager = new SessionManager(getApplicationContext());
+
 
         imageButtonReport = (ImageButton)findViewById(R.id.imageButtonReport);
         imageButtonReport.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +85,7 @@ public class MainMenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String searchString = null;
+                System.out.println(user.toString());
                 try {
                     searchString = URLEncoder.encode(String.valueOf(user.getId()), "UTF-8");
                 } catch (UnsupportedEncodingException e) {
@@ -83,6 +94,19 @@ public class MainMenuActivity extends Activity {
                 searchCrimes(UrlHelper.CRIMES_SEARCH_URL + searchString);
             }
         });
+
+
+        logoutbutton = (Button)findViewById(R.id.logoutButton);
+        logoutbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sessionManager.clearUser();
+                Intent intent = new Intent(MainMenuActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        Toast.makeText(getApplicationContext(), "Welcome " + user.getFullName(), Toast.LENGTH_LONG).show();
     }
 
 
@@ -121,6 +145,9 @@ public class MainMenuActivity extends Activity {
                     if( crimes.size() > 0 ){
                         Intent intent = new Intent(MainMenuActivity.this, CrimeHistoryActivity.class);
                         startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "No crime reports found for this user.", Toast.LENGTH_LONG).show();
                     }
 
                 }catch (JSONException e){

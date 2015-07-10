@@ -24,7 +24,6 @@ public class CrimeHistoryActivity extends AppCompatActivity {
     private RecyclerView mCrimesRecyclerView;
     private RecyclerView.Adapter mCrimesAdapter;
     private RecyclerView.LayoutManager mCrimesLayoutManager;
-    Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +37,6 @@ public class CrimeHistoryActivity extends AppCompatActivity {
         crimes.addAll(MainMenuActivity.getCrimes());
         mCrimesAdapter = new CrimesAdapter(crimes);
         mCrimesRecyclerView.setAdapter(mCrimesAdapter);
-        btnBack = (Button) findViewById(R.id.buttonBack);
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
     public void clearData(){
