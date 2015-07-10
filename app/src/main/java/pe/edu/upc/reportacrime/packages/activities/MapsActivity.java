@@ -3,6 +3,7 @@ package pe.edu.upc.reportacrime.packages.activities;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,6 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 import pe.edu.upc.reportacrime.R;
+import pe.edu.upc.reportacrime.packages.adapters.DistrictsAdapter;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback{
 
@@ -23,7 +25,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double[] longitudes;
     private ArrayList<String> titles = new ArrayList<>();
 
-    private Spinner districts;
+    private Spinner districtsSpinner;
+    private DistrictsAdapter mDistrictsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +34,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         MapFragment map = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
 
-        districts = (Spinner) findViewById(R.id.districtsSpinner);
-        if(titles.size() < 2){
-            districts.setVisibility(View.GONE);
-        }
+        mDistrictsAdapter = new DistrictsAdapter(this, R.layout.spinner, SplashScreenActivity.getDistricts());
+        districtsSpinner = (Spinner) findViewById(R.id.districtsSpinner);
+        districtsSpinner.setAdapter(mDistrictsAdapter);
 
+        districtsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         map.getMapAsync(this);
 
@@ -50,7 +63,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng latlng;
         int zoom;
         if (titles.size() > 1) zoom = 10;
-        else zoom = 17;
+        else{
+            zoom = 17;
+            districtsSpinner.setVisibility(View.GONE);
+        }
         for(int pos = 0; pos < titles.size(); pos++){
             double latitude = latitudes[pos];
             double longitude = longitudes[pos];
@@ -62,4 +78,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         map.setMyLocationEnabled(true);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, zoom));
     }
+
 }

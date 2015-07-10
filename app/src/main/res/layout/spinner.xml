@@ -8,6 +8,7 @@
     android:paddingLeft="10dp"
     android:layout_gravity="center"
     android:background="@color/white"
+    android:spinnerMode="dialog"
     android:gravity="center|right"
     android:textAlignment="center"
     android:id="@+id/spinner"

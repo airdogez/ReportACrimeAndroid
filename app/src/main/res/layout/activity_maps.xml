@@ -8,6 +8,7 @@ android:background="@color/bg_main">
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:spinnerMode="dialog"
         android:id="@+id/districtsSpinner" />
 
     <fragment

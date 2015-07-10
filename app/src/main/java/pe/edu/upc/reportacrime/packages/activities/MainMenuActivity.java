@@ -1,14 +1,8 @@
 package pe.edu.upc.reportacrime.packages.activities;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -31,8 +25,6 @@ import java.util.ArrayList;
 import pe.edu.upc.reportacrime.packages.helpers.SessionManager;
 import pe.edu.upc.reportacrime.packages.helpers.UrlHelper;
 import pe.edu.upc.reportacrime.packages.models.Crime;
-import pe.edu.upc.reportacrime.packages.models.Category;
-import pe.edu.upc.reportacrime.packages.models.District;
 import pe.edu.upc.reportacrime.packages.models.User;
 import pe.edu.upc.reportacrime.R;
 
@@ -45,7 +37,7 @@ public class MainMenuActivity extends AppCompatActivity{
     ImageButton imageButtonReport;
     ImageButton imageButtonZones;
     ImageButton imageButtonHistory;
-    Button logoutbutton;
+    Button logoutButton;
     User user;
     private static ArrayList<Crime> crimes = new ArrayList<>();
 
@@ -69,6 +61,7 @@ public class MainMenuActivity extends AppCompatActivity{
                     Intent i = new Intent(MainMenuActivity.this, ReportCrimeActivity.class);
                     startActivity(i);
                 }
+                else Toast.makeText(getApplicationContext(), "Cant connect to service.", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -80,6 +73,7 @@ public class MainMenuActivity extends AppCompatActivity{
                     Intent i = new Intent(MainMenuActivity.this, DelictiveZonesActivity.class);
                     startActivity(i);
                 }
+                else Toast.makeText(getApplicationContext(), "Cant connect to service.", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -99,8 +93,8 @@ public class MainMenuActivity extends AppCompatActivity{
         });
 
 
-        logoutbutton = (Button)findViewById(R.id.logoutButton);
-        logoutbutton.setOnClickListener(new View.OnClickListener() {
+        logoutButton = (Button)findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sessionManager.clearUser();
@@ -111,8 +105,6 @@ public class MainMenuActivity extends AppCompatActivity{
         });
         Toast.makeText(getApplicationContext(), "Welcome " + user.getFullName(), Toast.LENGTH_LONG).show();
     }
-
-
 
     public void searchCrimes(String searchString){
         JsonObjectRequest jsonRequest = new JsonObjectRequest(
@@ -168,25 +160,4 @@ public class MainMenuActivity extends AppCompatActivity{
         Volley.newRequestQueue(this).add(jsonRequest);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

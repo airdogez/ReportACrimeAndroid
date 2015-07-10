@@ -15,10 +15,12 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import pe.edu.upc.reportacrime.R;
 import pe.edu.upc.reportacrime.packages.helpers.UrlHelper;
@@ -33,8 +35,7 @@ public class ReportCrimeResumeActivity extends AppCompatActivity{
     TextView titleTextView;
     TextView descriptionTextView;
     TextView categoryTextView;
-    TextView longitudeTextView;
-    TextView latitudeTextView;
+    TextView addressTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +53,8 @@ public class ReportCrimeResumeActivity extends AppCompatActivity{
         categoryTextView = (TextView) findViewById(R.id.categoryTextView);
         categoryTextView.setText(bundle.getString("category"));
 
-        latitudeTextView = (TextView) findViewById(R.id.latitudeTextView);
-        latitudeTextView.setText(String.valueOf(bundle.getDouble("latitude")));
-
-        longitudeTextView = (TextView) findViewById(R.id.longitudeTextView);
-        longitudeTextView.setText(String.valueOf(bundle.getDouble("longitude")));
-
+        addressTextView = (TextView) findViewById(R.id.addressTextView);
+        addressTextView.setText(bundle.getString("address"));
 
         btnSendReport = (Button)findViewById(R.id.buttonSend);
         btnSendReport.setOnClickListener(new View.OnClickListener() {
@@ -68,10 +65,9 @@ public class ReportCrimeResumeActivity extends AppCompatActivity{
                 int user_id = bundle.getInt("user_id");
                 int district_id = bundle.getInt("district_id");
                 int category_id = bundle.getInt("category_id");
-                double latitude = bundle.getDouble("latitude");
-                double longitude = bundle.getDouble("longitude");
+                String address = bundle.getString("address");
                 try {
-                    sendReport(name, description, user_id, district_id, category_id, latitude, longitude);
+                    sendReport(name, description, user_id, district_id, category_id, address);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -79,14 +75,13 @@ public class ReportCrimeResumeActivity extends AppCompatActivity{
         });
     }
 
-    public void sendReport(String name, String description, int user_id, int district_id, int category_id, double latitude, double longitude) throws JSONException {
+    public void sendReport(String name, String description, int user_id, int district_id, int category_id, String address) throws JSONException {
   String jsonBody = "{\"crime\":{\"name\":\"" + name
                             + "\",\"description\":\"" + description
                             + "\",\"user_id\":\"" + user_id
                             + "\",\"district_id\":\"" + district_id
                             + "\",\"category_id\":\"" + category_id
-                            + "\",\"longitude\":\"" + longitude
-                            + "\",\"latitude\":\"" + latitude
+                            + "\",\"address\":\"" + address
                             + "\",\"status_id\":\"1\"}}";
         JSONObject request = new JSONObject(jsonBody);
         request.toString();

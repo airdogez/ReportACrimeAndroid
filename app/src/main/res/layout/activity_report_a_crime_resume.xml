@@ -58,31 +58,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Latitude"
+            android:text="Address"
             android:paddingBottom="10dip"
             android:id="@+id/textView24" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Latitude Placeholder"
+            android:text="Address Placeholder"
             android:paddingBottom="20dip"
-            android:id="@+id/latitudeTextView" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Longitude"
-            android:paddingBottom="10dip"
-            android:id="@+id/textView28" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Longitude Placeholder"
-            android:paddingBottom="20dip"
-            android:id="@+id/longitudeTextView" />
+            android:id="@+id/addressTextView" />
 
         <TextView
             android:layout_width="wrap_content"

@@ -3,7 +3,9 @@ package pe.edu.upc.reportacrime.packages.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
 import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.Location;
@@ -15,28 +17,27 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 import pe.edu.upc.reportacrime.packages.adapters.CategoriesAdapter;
 import pe.edu.upc.reportacrime.packages.adapters.DistrictsAdapter;
-import pe.edu.upc.reportacrime.packages.models.Crime;
-import pe.edu.upc.reportacrime.packages.models.District;
 import pe.edu.upc.reportacrime.packages.models.Category;
 import pe.edu.upc.reportacrime.R;
+import pe.edu.upc.reportacrime.packages.models.District;
 
 /**
  * Created by Miguel on 05/06/2015.
  */
 public class ReportCrimeActivity extends AppCompatActivity implements LocationListener{
 
-    private Crime crime;
     private DistrictsAdapter mDistrictsAdapter;
-
     private CategoriesAdapter mCategoryAdapter;
-
 
     private EditText titleEditText;
     private EditText descriptionEditText;
+    private EditText addressEditText;
     private Spinner categorySpinner;
     private Spinner districtSpinner;
     private Button reportButton;
@@ -44,11 +45,17 @@ public class ReportCrimeActivity extends AppCompatActivity implements LocationLi
     private double longitude;
     private double latitude;
 
+    private Geocoder geocoder;
+
+    private String address;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_a_crime);
+
+
 
         LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, this);
@@ -62,14 +69,32 @@ public class ReportCrimeActivity extends AppCompatActivity implements LocationLi
 
             lm.requestLocationUpdates(provider, 20000, 1, this);
 
-            if(location!=null)
+            if(location!=null) {
                 onLocationChanged(location);
-            else
+                addressEditText = (EditText) findViewById(R.id.addressEditText);
+
+                geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+
+                List<Address> addresses = null;
+                try {
+                    addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                assert addresses != null;
+
+                address = addresses.get(0).getAddressLine(0); //Street
+                //String dis = addresses.get(0).getAddressLine(1); //Postal code
+                //String dis2 = addresses.get(0).getAddressLine(2); //Department
+
+                addressEditText.setText(address);
+            }else
                 Toast.makeText(getBaseContext(), "Location can't be retrieved", Toast.LENGTH_SHORT).show();
 
         }else{
             Toast.makeText(getBaseContext(), "No Provider Found", Toast.LENGTH_SHORT).show();
         }
+
 
         titleEditText = (EditText)findViewById(R.id.titleEditText);
         descriptionEditText = (EditText)findViewById(R.id.descriptionEditText);
@@ -98,8 +123,9 @@ public class ReportCrimeActivity extends AppCompatActivity implements LocationLi
                 bundle.putString("category", cat.getName());
                 int dis_id = (int)districtSpinner.getSelectedItemId();
                 bundle.putInt("district_id", dis_id);
-                bundle.putDouble("latitude", latitude);
-                bundle.putDouble("longitude", longitude);
+
+                District district = (District) districtSpinner.getSelectedItem();
+                bundle.putString("address",addressEditText.getText()+ ", " + district.getName());
                 i.putExtras(bundle);
                 v.getContext().startActivity(i);
             }

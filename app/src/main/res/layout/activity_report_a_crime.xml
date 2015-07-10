@@ -51,6 +51,7 @@
             android:paddingLeft="5dp"
             android:background="@color/white"
             android:elevation="5dp"
+            android:spinnerMode="dialog"
             android:layout_marginBottom="5dp"
             android:gravity="right"
             android:layout_gravity="right"
@@ -80,6 +81,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="5dp"
             android:gravity="right"
+            android:spinnerMode="dialog"
             android:elevation="5dp"
             android:layout_gravity="right"
             android:textAlignment="gravity"
@@ -97,8 +99,20 @@
         android:layout_marginBottom="5dp"
         android:background="@color/white"
         android:elevation="5dp"
-        android:lines="4"
+        android:lines="2"
         android:hint="Crime Description" />
+
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addressEditText"
+            android:padding="10dp"
+            android:gravity="top"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:elevation="5dp"
+            android:hint="Address" />
 
     <ImageButton
         android:layout_width="wrap_content"
