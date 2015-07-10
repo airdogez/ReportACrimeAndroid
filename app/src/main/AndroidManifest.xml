@@ -28,7 +28,7 @@
         </activity>
         <activity
             android:name=".packages.activities.RegisterActivity"
-            android:label="Registe Account" >
+            android:label="Register Account" >
         </activity>
         <activity
             android:name=".packages.activities.MainMenuActivity"
@@ -36,19 +36,19 @@
         </activity>
         <activity
             android:name=".packages.activities.ReportCrimeActivity"
-            android:label="@string/Applicationname" >
+            android:label="Create a new crime report" >
         </activity>
         <activity
             android:name=".packages.activities.DelictiveZonesActivity"
-            android:label="@string/Applicationname" >
+            android:label="Delictive Zones" >
         </activity>
         <activity
             android:name=".packages.activities.CrimeHistoryActivity"
-            android:label="Crime History">
+            android:label="Crime Report History">
         </activity>
         <activity
             android:name=".packages.activities.ReportCrimeResumeActivity"
-            android:label="Crime Resume" >
+            android:label="Crime Report Resume" >
         </activity>
         <activity
             android:name=".packages.activities.CrimeItemActivity"

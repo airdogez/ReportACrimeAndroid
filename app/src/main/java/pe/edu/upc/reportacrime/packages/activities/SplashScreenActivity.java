@@ -2,6 +2,7 @@ package pe.edu.upc.reportacrime.packages.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -23,7 +24,7 @@ import pe.edu.upc.reportacrime.packages.models.District;
 /**
  * Created by Miguel on 04/06/2015.
  */
-public class SplashScreenActivity extends Activity{
+public class SplashScreenActivity extends AppCompatActivity{
 
 
     private static ArrayList<District> districts= new ArrayList<>();

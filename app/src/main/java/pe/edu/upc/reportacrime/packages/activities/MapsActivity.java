@@ -2,6 +2,8 @@ package pe.edu.upc.reportacrime.packages.activities;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Spinner;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,11 +23,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double[] longitudes;
     private ArrayList<String> titles = new ArrayList<>();
 
+    private Spinner districts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         MapFragment map = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+
+        districts = (Spinner) findViewById(R.id.districtsSpinner);
+        if(titles.size() < 2){
+            districts.setVisibility(View.GONE);
+        }
 
 
         map.getMapAsync(this);

@@ -8,6 +8,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +27,7 @@ import pe.edu.upc.reportacrime.R;
 /**
  * Created by Miguel on 05/06/2015.
  */
-public class ReportCrimeActivity extends Activity  implements LocationListener{
+public class ReportCrimeActivity extends AppCompatActivity implements LocationListener{
 
     private Crime crime;
     private DistrictsAdapter mDistrictsAdapter;
