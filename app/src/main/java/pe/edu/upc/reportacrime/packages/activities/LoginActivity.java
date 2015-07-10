@@ -16,10 +16,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import pe.edu.upc.reportacrime.packages.helpers.SessionManager;
+import pe.edu.upc.reportacrime.packages.helpers.UrlHelper;
+import pe.edu.upc.reportacrime.packages.models.District;
 import pe.edu.upc.reportacrime.packages.models.User;
 import pe.edu.upc.reportacrime.R;
 
@@ -33,7 +38,6 @@ public class LoginActivity extends Activity {
     private EditText inputEmail;
     private EditText inputPassword;
     private ProgressDialog progressDialog;
-    private static String LOGIN_URL = "http://mobdev-aqws3.c9.io/users/sign_in.json";
     private static User user = null;
 
     public static User getUser(){
@@ -84,9 +88,11 @@ public class LoginActivity extends Activity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-                finish();
+                if(SplashScreenActivity.getDistricts() != null) {
+                    Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 
@@ -101,7 +107,7 @@ public class LoginActivity extends Activity {
 
         JSONObject request = new JSONObject(jsonBody);
         JsonObjectRequest jsonRequest = new JsonObjectRequest(
-                Request.Method.POST, LOGIN_URL, request, new Response.Listener<JSONObject>() {
+                Request.Method.POST, UrlHelper.LOGIN_URL, request, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 System.out.println(response.toString());

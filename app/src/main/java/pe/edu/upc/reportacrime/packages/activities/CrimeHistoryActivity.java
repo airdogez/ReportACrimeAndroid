@@ -2,6 +2,7 @@ package pe.edu.upc.reportacrime.packages.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,7 +17,7 @@ import pe.edu.upc.reportacrime.R;
 /**
  * Created by Miguel on 05/06/2015.
  */
-public class CrimeHistoryActivity extends ActionBarActivity {
+public class CrimeHistoryActivity extends AppCompatActivity {
 
     ArrayList<Crime> crimes;
 

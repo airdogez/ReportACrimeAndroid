@@ -22,6 +22,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import pe.edu.upc.reportacrime.packages.adapters.DistrictsAdapter;
+import pe.edu.upc.reportacrime.packages.helpers.UrlHelper;
 import pe.edu.upc.reportacrime.packages.models.Crime;
 import pe.edu.upc.reportacrime.packages.models.District;
 import pe.edu.upc.reportacrime.R;
@@ -33,7 +34,6 @@ import pe.edu.upc.reportacrime.R;
 public class DelictiveZonesActivity extends Activity {
 
 
-    private static String SEARCH_CRIMES_BY_DISTRICT_URL = "http://mobdev-aqws3.c9.io/api/v1/crimes?district_id=";
     private Spinner districtSpinner;
     private Button buttonMap;
     private ArrayList<District> districts = new ArrayList<>();
@@ -46,7 +46,7 @@ public class DelictiveZonesActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delictive_zones);
 
-        districts = MainMenuActivity.getDistricts();
+        districts = SplashScreenActivity.getDistricts();
 
         mDistrictsAdapter = new DistrictsAdapter(this, R.layout.spinner, districts);
         districtSpinner = (Spinner)findViewById(R.id.districtsSpinner);
@@ -63,7 +63,7 @@ public class DelictiveZonesActivity extends Activity {
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-                searchCrimesDistrict(SEARCH_CRIMES_BY_DISTRICT_URL + searchString);
+                searchCrimesDistrict(UrlHelper.SEARCH_CRIMES_BY_DISTRICT_URL + searchString);
             }
         });
     }

@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import pe.edu.upc.reportacrime.R;
+import pe.edu.upc.reportacrime.packages.helpers.UrlHelper;
 
 /**
  * Created by Miguel on 05/06/2015.
@@ -24,7 +25,6 @@ import pe.edu.upc.reportacrime.R;
 public class ReportCrimeResumeActivity extends Activity {
 
 
-    private static String CREATE_CRIME_REPORT_URL = "http://mobdev-aqws3.c9.io/api/v1/crimes";
     Button btnSendReport;
     TextView titleTextView;
     TextView descriptionTextView;
@@ -86,7 +86,7 @@ public class ReportCrimeResumeActivity extends Activity {
                             + "\",\"status_id\":\"1\"}}";
         JSONObject request = new JSONObject(jsonBody);
         JsonObjectRequest jsonRequest = new JsonObjectRequest(
-                Request.Method.POST, CREATE_CRIME_REPORT_URL, request, new Response.Listener<JSONObject>() {
+                Request.Method.POST, UrlHelper.CREATE_CRIME_REPORT_URL, request, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Toast.makeText(ReportCrimeResumeActivity.this, "Crime registered successfully", Toast.LENGTH_LONG).show();

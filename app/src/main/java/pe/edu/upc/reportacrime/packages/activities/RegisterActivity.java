@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 import pe.edu.upc.reportacrime.R;
 import pe.edu.upc.reportacrime.packages.adapters.DistrictsAdapter;
+import pe.edu.upc.reportacrime.packages.helpers.UrlHelper;
 import pe.edu.upc.reportacrime.packages.models.District;
 
 /**
@@ -39,19 +40,14 @@ public class RegisterActivity extends Activity {
 
     private Spinner spinnerDistrict;
     private DistrictsAdapter mDistrictAdapter;
-    private ArrayList<District> districts;
 
-    private static String REGISTER_URL = "http://mobdev-aqws3.c9.io/users";
-    private static String DISTRICTS_URL = "http://mobdev-aqws3.c9.io/api/v1/districts";
     private Button btnBack;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        searchDistricts();
-
-        mDistrictAdapter = new DistrictsAdapter(this, R.layout.spinner, districts);
+        mDistrictAdapter = new DistrictsAdapter(this, R.layout.spinner, SplashScreenActivity.getDistricts());
         spinnerDistrict = (Spinner)findViewById(R.id.districtsSpinner);
         spinnerDistrict.setAdapter(mDistrictAdapter);
 
@@ -106,7 +102,7 @@ public class RegisterActivity extends Activity {
                             + "\",\"password_confirmation\":\"" + password + "\"}}";
         JSONObject request = new JSONObject(jsonBody);
         JsonObjectRequest jsonRequest = new JsonObjectRequest(
-                Request.Method.POST, REGISTER_URL, request, new Response.Listener<JSONObject>() {
+                Request.Method.POST, UrlHelper.REGISTER_URL, request, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Toast.makeText(RegisterActivity.this, "Registration succesful",Toast.LENGTH_LONG).show();
@@ -122,33 +118,5 @@ public class RegisterActivity extends Activity {
         Volley.newRequestQueue(this).add(jsonRequest);
     }
 
-     private void searchDistricts() {
-        JsonObjectRequest districtsRequest = new JsonObjectRequest(
-                Request.Method.GET, DISTRICTS_URL, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    districts.clear();
-                    JSONArray resultsArray = response.getJSONArray("districts");
-                    for(int pos = 0; pos < resultsArray.length(); pos++){
-                        JSONObject result = resultsArray.getJSONObject(pos);
-                        int id = result.getInt("id");
-                        String name = result.getString("name");
-                        District district = new District(id, name);
-                        districts.add(district);
-                    }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        }
-        );
-        Volley.newRequestQueue(this).add(districtsRequest);
-    }
 }

@@ -42,8 +42,8 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center">
 
         <TextView
@@ -55,20 +55,20 @@
 
         <Spinner
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/categoriesSpinner"
-            android:background="@color/white"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dp"
+            android:background="@color/white"
             android:gravity="right"
-            android:textAlignment="gravity" />
+            android:layout_gravity="right"
+            android:id="@+id/categoriesSpinner" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
@@ -79,12 +79,13 @@
 
         <Spinner
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/districtsSpinner"
+            android:layout_height="50dp"
             android:background="@color/white"
-            android:layout_marginLeft="23dp"
+            android:layout_marginLeft="10dp"
             android:gravity="right"
-            android:textAlignment="gravity" />
+            android:layout_gravity="right"
+            android:id="@+id/districtsSpinner" />
+
     </LinearLayout>
 
     <EditText

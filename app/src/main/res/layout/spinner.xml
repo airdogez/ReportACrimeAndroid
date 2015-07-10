@@ -4,10 +4,13 @@
     android:elevation="5dp"
     android:layout_marginRight="10dp"
     android:layout_marginLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
     android:layout_gravity="center"
-    android:gravity="center"
-    android:textAlignment="gravity"
+    android:background="@color/white"
+    android:gravity="center|right"
+    android:textAlignment="center"
     android:id="@+id/spinner"
-    >
+    style="@style/AppTheme">
 
 </Spinner>

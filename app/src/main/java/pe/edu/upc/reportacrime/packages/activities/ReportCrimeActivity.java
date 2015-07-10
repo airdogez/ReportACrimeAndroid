@@ -29,10 +29,8 @@ import pe.edu.upc.reportacrime.R;
 public class ReportCrimeActivity extends Activity  implements LocationListener{
 
     private Crime crime;
-    private ArrayList<District> districts = new ArrayList<>();
     private DistrictsAdapter mDistrictsAdapter;
 
-    private ArrayList<Category> categories = new ArrayList<>();
     private CategoriesAdapter mCategoryAdapter;
 
 
@@ -50,8 +48,6 @@ public class ReportCrimeActivity extends Activity  implements LocationListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_a_crime);
-        districts.addAll(MainMenuActivity.getDistricts());
-        categories.addAll(MainMenuActivity.getCategories());
 
         LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, this);
@@ -77,11 +73,11 @@ public class ReportCrimeActivity extends Activity  implements LocationListener{
         titleEditText = (EditText)findViewById(R.id.titleEditText);
         descriptionEditText = (EditText)findViewById(R.id.descriptionEditText);
 
-        mDistrictsAdapter = new DistrictsAdapter(this, R.layout.spinner, districts);
+        mDistrictsAdapter = new DistrictsAdapter(this, R.layout.spinner, SplashScreenActivity.getDistricts());
         districtSpinner = (Spinner)findViewById(R.id.districtsSpinner);
         districtSpinner.setAdapter(mDistrictsAdapter);
 
-        mCategoryAdapter = new CategoriesAdapter(this, R.layout.spinner, categories);
+        mCategoryAdapter = new CategoriesAdapter(this, R.layout.spinner, SplashScreenActivity.getCategories());
         categorySpinner = (Spinner)findViewById(R.id.categoriesSpinner);
         categorySpinner.setAdapter(mCategoryAdapter);
 

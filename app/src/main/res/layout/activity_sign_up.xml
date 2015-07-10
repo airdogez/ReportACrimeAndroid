@@ -83,7 +83,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_marginRight="20dp"
@@ -92,10 +92,7 @@
 
             <Spinner
                 android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:background="@color/white"
-                android:elevation="5dp"
-                android:gravity="center"
+                android:layout_height="wrap_content"
                 android:id="@+id/districtsSpinner" />
         </LinearLayout>
 
