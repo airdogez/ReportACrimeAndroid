@@ -27,6 +27,7 @@ public class CrimeItemActivity extends AppCompatActivity{
     double latitude;
     double longitude;
     String title;
+    String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -37,6 +38,7 @@ public class CrimeItemActivity extends AppCompatActivity{
         latitude = bundle.getDouble("latitude");
         longitude = bundle.getDouble("longitude");
         title = bundle.getString("title");
+        category = bundle.getString("category");
 
         titleTextView = (TextView) findViewById(R.id.titleTextView);
         titleTextView.setText(bundle.getString("title"));
@@ -64,6 +66,10 @@ public class CrimeItemActivity extends AppCompatActivity{
                 ArrayList<String> titles = new ArrayList<String>();
                 titles.add(title);
                 b.putStringArrayList("name", titles);
+
+                ArrayList<String> categories = new ArrayList<String>();
+                categories.add(category);
+                b.putStringArrayList("category",categories);
                 intent.putExtras(b);
                 startActivity(intent);
             }
