@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -38,6 +39,16 @@ public class CrimesAdapter extends RecyclerView.Adapter<CrimesAdapter.ViewHolder
     @Override
     public void onBindViewHolder(CrimesAdapter.ViewHolder holder, final int position){
         holder.titleTextView.setText(crimes.get(position).getName());
+        String status = crimes.get(position).getStatus();
+        if(status.equals("On going"))
+            holder.statusImageView.setImageResource(R.drawable.on_going);
+        else if (status.equals("Reported"))
+            holder.statusImageView.setImageResource(R.drawable.reported);
+        else if (status.equals("Cleared"))
+            holder.statusImageView.setImageResource(R.drawable.cleared);
+        else if (status.equals("Unresolved"))
+            holder.statusImageView.setImageResource(R.drawable.unresolved);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,9 +75,11 @@ public class CrimesAdapter extends RecyclerView.Adapter<CrimesAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView titleTextView;
+        ImageView statusImageView;
         public ViewHolder(View itemView){
             super(itemView);
             titleTextView = (TextView) itemView.findViewById(R.id.titleTextView);
+            statusImageView = (ImageView) itemView.findViewById(R.id.statusImageView);
         }
     }
 }
