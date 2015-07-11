@@ -9,11 +9,14 @@ import android.location.Geocoder;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,6 +35,10 @@ import pe.edu.upc.reportacrime.packages.models.District;
  */
 public class ReportCrimeActivity extends AppCompatActivity implements LocationListener{
 
+    private Uri fileUri; //El Uri es una clase de android
+    private static final int MEDIA_TYPE_IMAGE = 1;//La camara del dispositivo puede tomar foto y grabar video
+    private static final int CAPTURE_IMAGE_REQUEST_CODE = 100;//Pediremos a la camara que capture una foto
+
     private DistrictsAdapter mDistrictsAdapter;
     private CategoriesAdapter mCategoryAdapter;
 
@@ -42,7 +49,9 @@ public class ReportCrimeActivity extends AppCompatActivity implements LocationLi
 
     private Spinner categorySpinner;
     private Spinner districtSpinner;
+
     private Button reportButton;
+    private ImageButton cameraButton;
 
     private double longitude;
     private double latitude;
@@ -56,8 +65,6 @@ public class ReportCrimeActivity extends AppCompatActivity implements LocationLi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_a_crime);
-
-
 
         LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, this);
@@ -97,7 +104,6 @@ public class ReportCrimeActivity extends AppCompatActivity implements LocationLi
             Toast.makeText(getBaseContext(), "No Provider Found", Toast.LENGTH_SHORT).show();
         }
 
-
         titleEditText = (EditText)findViewById(R.id.titleEditText);
         descriptionEditText = (EditText)findViewById(R.id.descriptionEditText);
         tagsEditText = (EditText)findViewById(R.id.tagsEditText);
@@ -109,6 +115,15 @@ public class ReportCrimeActivity extends AppCompatActivity implements LocationLi
         mCategoryAdapter = new CategoriesAdapter(this, R.layout.spinner, SplashScreenActivity.getCategories());
         categorySpinner = (Spinner)findViewById(R.id.categoriesSpinner);
         categorySpinner.setAdapter(mCategoryAdapter);
+
+        cameraButton = (ImageButton) findViewById(R.id.cameraImageButton);
+        cameraButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
+                startActivity(i);
+            }
+        });
 
         reportButton = (Button)findViewById(R.id.buttonReport);
         reportButton.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +150,6 @@ public class ReportCrimeActivity extends AppCompatActivity implements LocationLi
         });
 
     }
-
 
     @Override
     public void onLocationChanged(Location location) {

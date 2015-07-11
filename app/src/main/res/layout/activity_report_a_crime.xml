@@ -128,12 +128,12 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="3dp"
         android:layout_marginTop="5dp"
-        android:layout_gravity="center"
-        android:id="@+id/imageButton4"
-        android:src="@mipmap/ic_launcher"
-        android:layout_above="@+id/editText24"
-        android:layout_centerHorizontal="true" />
+        android:layout_gravity="right"
+        android:background="@color/white"
+        android:id="@+id/cameraImageButton"
+        android:src="@android:drawable/ic_menu_camera"/>
 
      <Button
         android:id="@+id/buttonReport"

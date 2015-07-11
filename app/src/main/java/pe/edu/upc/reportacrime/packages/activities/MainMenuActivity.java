@@ -88,7 +88,7 @@ public class MainMenuActivity extends AppCompatActivity{
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-                searchCrimes(UrlHelper.CRIMES_SEARCH_URL + searchString);
+                searchCrimes(UrlHelper.SEARCH_CRIMES_BY_USER_URL + searchString);
             }
         });
 

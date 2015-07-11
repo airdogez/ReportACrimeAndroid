@@ -92,7 +92,7 @@ public class ReportCrimeResumeActivity extends AppCompatActivity{
         JSONObject request = new JSONObject(jsonBody);
         request.toString();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(
-                Request.Method.POST, UrlHelper.CREATE_CRIME_REPORT_URL, request, new Response.Listener<JSONObject>() {
+                Request.Method.POST, UrlHelper.CRIMES_URL, request, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Intent intent = new Intent(ReportCrimeResumeActivity.this, MainMenuActivity.class);

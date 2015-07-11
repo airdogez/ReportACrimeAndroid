@@ -49,21 +49,26 @@ public class DelictiveZonesActivity extends AppCompatActivity {
         districts = SplashScreenActivity.getDistricts();
 
         mDistrictsAdapter = new DistrictsAdapter(this, R.layout.spinner, districts);
-        districtSpinner = (Spinner)findViewById(R.id.districtsSpinner);
+        districtSpinner = (Spinner) findViewById(R.id.districtsSpinner);
         districtSpinner.setAdapter(mDistrictsAdapter);
 
-        buttonMap = (Button)findViewById(R.id.buttonMap);
+        buttonMap = (Button) findViewById(R.id.buttonMap);
         buttonMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 District district = (District) districtSpinner.getSelectedItem();
                 String searchString = null;
-                try {
-                    searchString = URLEncoder.encode(String.valueOf(district.getId()), "UTF-8");
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
+                if (districtSpinner.getSelectedItemId() == 1)
+                    searchCrimesDistrict(UrlHelper.CRIMES_URL);
+                else {
+                    try {
+                        searchString = URLEncoder.encode(String.valueOf(district.getId()), "UTF-8");
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    searchCrimesDistrict(UrlHelper.SEARCH_CRIMES_BY_DISTRICT_URL + searchString);
+
                 }
-                searchCrimesDistrict(UrlHelper.SEARCH_CRIMES_BY_DISTRICT_URL + searchString);
             }
         });
     }
