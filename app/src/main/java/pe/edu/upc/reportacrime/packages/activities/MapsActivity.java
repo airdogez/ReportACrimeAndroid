@@ -17,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -39,6 +40,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double[] latitudes;
     private double[] longitudes;
     private ArrayList<String> titles = new ArrayList<>();
+    private ArrayList<String> categories = new ArrayList<>();
 
     private Spinner districtsSpinner;
     private DistrictsAdapter mDistrictsAdapter;
@@ -71,6 +73,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         latitudes = bundle.getDoubleArray("latitude");
         longitudes = bundle.getDoubleArray("longitude");
         titles = bundle.getStringArrayList("name");
+        categories = bundle.getStringArrayList("category");
     }
 
     @Override
@@ -89,7 +92,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             double longitude = longitudes[pos];
             latlng = new LatLng(latitude, longitude);
             String title = titles.get(pos);
-            map.addMarker(new MarkerOptions().position(latlng).title(title));
+            String category = categories.get(pos);
+            if(category.equals("Assault"))
+                map.addMarker(new MarkerOptions().position(latlng).title(title).icon(BitmapDescriptorFactory.fromResource(R.drawable.assault)));
+            else if(category.equals("Theft"))
+                map.addMarker(new MarkerOptions().position(latlng).title(title).icon(BitmapDescriptorFactory.fromResource(R.drawable.theft)));
+            else if(category.equals("Car Theft"))
+                map.addMarker(new MarkerOptions().position(latlng).title(title).icon(BitmapDescriptorFactory.fromResource(R.drawable.crimescene)));
+            else if(category.equals("Arson"))
+                map.addMarker(new MarkerOptions().position(latlng).title(title).icon(BitmapDescriptorFactory.fromResource(R.drawable.arson)));
+            else if(category.equals("Shooting"))
+                map.addMarker(new MarkerOptions().position(latlng).title(title).icon(BitmapDescriptorFactory.fromResource(R.drawable.shooting)));
+            else if(category.equals("Kidnapping"))
+                map.addMarker(new MarkerOptions().position(latlng).title(title).icon(BitmapDescriptorFactory.fromResource(R.drawable.kidnapping)));
+            else
+                map.addMarker(new MarkerOptions().position(latlng).title(title));
+
         }
         latlng = new LatLng(latitudes[0], longitudes[0]);
         map.setMyLocationEnabled(true);

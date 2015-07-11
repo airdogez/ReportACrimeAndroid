@@ -12,6 +12,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -111,14 +112,18 @@ public class DelictiveZonesActivity extends AppCompatActivity {
                         double[] latitudes = new double[size];
                         double[] longitudes = new double[size];
                         ArrayList<String> titles = new ArrayList<>();
+                        ArrayList<String> categories = new ArrayList<>();
                         for (int pos = 0 ; pos < crimes.size(); pos++ ){
                             latitudes[pos] = crimes.get(pos).getLatitude();
                             longitudes[pos] = crimes.get(pos).getLongitude();
                             titles.add(crimes.get(pos).getName());
+                            categories.add(crimes.get(pos).getCategory());
                         }
                         b.putDoubleArray("latitude", latitudes);
                         b.putDoubleArray("longitude", longitudes);
                         b.putStringArrayList("name", titles);
+                        b.putStringArrayList("category", categories);
+
                         intent.putExtras(b);
                         startActivity(intent);
                     }
